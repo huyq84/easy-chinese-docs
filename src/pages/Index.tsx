@@ -31,7 +31,7 @@ const Index = () => {
       {!selected && (
         <div className="flex flex-col items-center gap-3 mb-8">
           <div className="mb-2 font-semibold text-gray-800">请选择文档类型：</div>
-          <div className="flex gap-4">
+          <div className="flex flex-wrap justify-center gap-4">
             {DEMO_DOCS.map((doc) => (
               <button
                 key={doc.type}
@@ -42,6 +42,10 @@ const Index = () => {
               </button>
             ))}
           </div>
+          <p className="mt-4 text-sm text-yellow-600 max-w-md text-center">
+            注意：由于 OnlyOffice 官方演示服务限制，可能无法在页面内嵌入编辑器。
+            如果遇到问题，将提供在新窗口中打开的选项。
+          </p>
         </div>
       )}
 
