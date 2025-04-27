@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -62,7 +61,7 @@ const Index = () => {
 
       {/* Footer */}
       <footer className="fixed bottom-4 left-0 w-full text-center text-gray-400 text-sm">
-        © 2024 huyq的个人网站 | 用❤️制作
+        © 2025 huyq的个人网站 | 用❤️制作
       </footer>
     </div>
   );
