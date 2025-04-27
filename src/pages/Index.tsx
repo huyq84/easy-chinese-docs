@@ -1,73 +1,68 @@
 
-import React, { useState } from "react";
-import OnlyOfficeEditor from "@/components/OnlyOfficeEditor";
-
-const DEMO_DOCS = [
-  {
-    name: "Word文档",
-    url: "https://api.onlyoffice.com/example.docx",
-    type: "word",
-  },
-  {
-    name: "表格文档",
-    url: "https://api.onlyoffice.com/example.xlsx",
-    type: "cell",
-  },
-  {
-    name: "演示文档",
-    url: "https://api.onlyoffice.com/example.pptx",
-    type: "slide",
-  },
-];
+import React from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Trophy, Rocket, Heart, Star } from "lucide-react";
 
 const Index = () => {
-  const [selected, setSelected] = useState<null | typeof DEMO_DOCS[0]>(null);
-
   return (
-    <div className="min-h-screen flex flex-col items-center justify-start bg-white pt-12">
-      <h1 className="text-4xl font-black mb-2 tracking-tight text-gray-900">在线Office文档编辑器</h1>
-      <p className="mb-7 text-lg text-gray-600">实现 OnlyOffice 在线编辑，TS+React 示例（中文页面）</p>
-
-      {!selected && (
-        <div className="flex flex-col items-center gap-3 mb-8">
-          <div className="mb-2 font-semibold text-gray-800">请选择文档类型：</div>
-          <div className="flex flex-wrap justify-center gap-4">
-            {DEMO_DOCS.map((doc) => (
-              <button
-                key={doc.type}
-                className="px-6 py-3 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 transition"
-                onClick={() => setSelected(doc)}
-              >
-                打开{doc.name}
-              </button>
-            ))}
-          </div>
-          <p className="mt-4 text-sm text-yellow-600 max-w-md text-center">
-            注意：由于 OnlyOffice 官方演示服务限制，可能无法在页面内嵌入编辑器。
-            如果遇到问题，将提供在新窗口中打开的选项。
+    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-black text-white">
+      {/* Hero Section */}
+      <div className="container mx-auto px-4 py-20">
+        <div className="text-center space-y-6 animate-fade-in">
+          <h1 className="text-6xl font-black mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600">
+            张三的个人网站
+          </h1>
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+            前端开发工程师 / UI设计师 / 开源爱好者
           </p>
-        </div>
-      )}
-
-      {selected && (
-        <>
-          <div className="flex items-center gap-2 my-3">
-            <span className="text-base text-gray-800">
-              当前文档：{selected.name}
-            </span>
-            <button
-              onClick={() => setSelected(null)}
-              className="ml-2 text-sm text-blue-500 underline hover:text-blue-700"
-            >
-              &larr; 返回选择
-            </button>
+          <div className="flex justify-center gap-4 mt-8">
+            <Button className="bg-blue-600 hover:bg-blue-700">联系我</Button>
+            <Button variant="outline" className="border-blue-600 text-blue-400">
+              查看作品
+            </Button>
           </div>
-          <OnlyOfficeEditor documentUrl={selected.url} documentType={selected.type as any} />
-        </>
-      )}
+        </div>
 
-      <footer className="fixed bottom-4 left-0 w-full text-center text-gray-400 text-xs">
-        Powered by OnlyOffice | 示例用途 | TS+React 快速集成演示
+        {/* Features Section */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-20">
+          <Card className="bg-white/10 backdrop-blur-lg border-0 hover:scale-105 transition-transform duration-300">
+            <CardContent className="p-6 text-center">
+              <Trophy className="w-12 h-12 mx-auto mb-4 text-yellow-400" />
+              <h3 className="text-xl font-bold mb-2">专业技能</h3>
+              <p className="text-gray-300">精通前端开发技术栈</p>
+            </CardContent>
+          </Card>
+
+          <Card className="bg-white/10 backdrop-blur-lg border-0 hover:scale-105 transition-transform duration-300">
+            <CardContent className="p-6 text-center">
+              <Rocket className="w-12 h-12 mx-auto mb-4 text-blue-400" />
+              <h3 className="text-xl font-bold mb-2">项目经验</h3>
+              <p className="text-gray-300">参与多个大型项目开发</p>
+            </CardContent>
+          </Card>
+
+          <Card className="bg-white/10 backdrop-blur-lg border-0 hover:scale-105 transition-transform duration-300">
+            <CardContent className="p-6 text-center">
+              <Heart className="w-12 h-12 mx-auto mb-4 text-red-400" />
+              <h3 className="text-xl font-bold mb-2">开源贡献</h3>
+              <p className="text-gray-300">活跃的开源社区贡献者</p>
+            </CardContent>
+          </Card>
+
+          <Card className="bg-white/10 backdrop-blur-lg border-0 hover:scale-105 transition-transform duration-300">
+            <CardContent className="p-6 text-center">
+              <Star className="w-12 h-12 mx-auto mb-4 text-purple-400" />
+              <h3 className="text-xl font-bold mb-2">获奖经历</h3>
+              <p className="text-gray-300">多个技术竞赛获奖</p>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <footer className="fixed bottom-4 left-0 w-full text-center text-gray-400 text-sm">
+        © 2024 张三的个人网站 | 用❤️制作
       </footer>
     </div>
   );
