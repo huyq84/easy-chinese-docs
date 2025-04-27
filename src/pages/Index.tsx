@@ -11,7 +11,7 @@ const Index = () => {
       <div className="container mx-auto px-4 py-20">
         <div className="text-center space-y-6 animate-fade-in">
           <h1 className="text-6xl font-black mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600">
-            张三的个人网站
+            huyq的个人网站
           </h1>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
             前端开发工程师 / UI设计师 / 开源爱好者
@@ -62,7 +62,7 @@ const Index = () => {
 
       {/* Footer */}
       <footer className="fixed bottom-4 left-0 w-full text-center text-gray-400 text-sm">
-        © 2024 张三的个人网站 | 用❤️制作
+        © 2024 huyq的个人网站 | 用❤️制作
       </footer>
     </div>
   );
