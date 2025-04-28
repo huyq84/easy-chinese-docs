@@ -23,7 +23,7 @@ const Index = () => {
               className="rounded-lg shadow-lg"
               width="560" 
               height="315" 
-              src="https://www.youtube.com/embed/VIDEO_ID"
+              src="https://www.bilibili.com/video/BV1GJ411x7h7/"
               title="微笑吧"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
               allowFullScreen>
@@ -40,22 +40,29 @@ const Index = () => {
             <CarouselContent>
               <CarouselItem>
                 <img
-                  src="https://source.unsplash.com/photo-1472396961693-142e6e269027"
-                  alt="Deer in nature"
+                  src="https://images.unsplash.com/photo-1472396961693-142e6e269027"
+                  alt="山林中的鹿"
                   className="w-full h-[400px] object-cover rounded-lg"
                 />
               </CarouselItem>
               <CarouselItem>
                 <img
-                  src="https://source.unsplash.com/photo-1482938289607-e9573fc25ebb"
-                  alt="Mountain river"
+                  src="https://images.unsplash.com/photo-1433086966358-54859d0ed716"
+                  alt="山间瀑布"
                   className="w-full h-[400px] object-cover rounded-lg"
                 />
               </CarouselItem>
               <CarouselItem>
                 <img
-                  src="https://source.unsplash.com/photo-1513836279014-a89f7a76ae86"
-                  alt="Pine trees"
+                  src="https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9"
+                  alt="松林"
+                  className="w-full h-[400px] object-cover rounded-lg"
+                />
+              </CarouselItem>
+              <CarouselItem>
+                <img
+                  src="https://images.unsplash.com/photo-1518495973542-4542c06a5843"
+                  alt="阳光林间"
                   className="w-full h-[400px] object-cover rounded-lg"
                 />
               </CarouselItem>
