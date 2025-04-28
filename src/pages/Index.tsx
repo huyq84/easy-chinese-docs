@@ -1,4 +1,5 @@
-import React from "react";
+
+import React, { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
@@ -9,15 +10,39 @@ import {
 } from "@/components/ui/carousel";
 
 const Index = () => {
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const togglePlay = () => {
+    const audioElement = document.getElementById("background-music") as HTMLAudioElement;
+    if (isPlaying) {
+      audioElement.pause();
+    } else {
+      audioElement.play();
+    }
+    setIsPlaying(!isPlaying);
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-black text-white">
       <div className="container mx-auto px-4 py-12">
         {/* Background Music Section */}
         <div className="mb-12 fixed bottom-16 right-4 z-50">
-          <audio controls loop className="rounded-lg shadow-lg">
-            <source src="/smile.mp3" type="audio/mpeg" />
+          <audio 
+            id="background-music"
+            controls 
+            loop
+            preload="auto" 
+            className="rounded-lg shadow-lg"
+          >
+            <source src="https://music.163.com/song/media/outer/url?id=1480733035.mp3" type="audio/mpeg" />
             Your browser does not support the audio element.
           </audio>
+          <button 
+            onClick={togglePlay}
+            className="mt-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-2 rounded-full w-full hover:opacity-90 transition-opacity"
+          >
+            {isPlaying ? "暂停" : "播放"} 微笑吧
+          </button>
         </div>
 
         {/* Nature Image Carousel */}
