@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -13,22 +12,12 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-black text-white">
       <div className="container mx-auto px-4 py-12">
-        {/* Music Section */}
-        <div className="mb-12">
-          <h2 className="text-3xl font-bold mb-6 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600">
-            微笑吧 - 音乐欣赏
-          </h2>
-          <div className="flex justify-center">
-            <iframe 
-              className="rounded-lg shadow-lg"
-              width="560" 
-              height="315" 
-              src="https://www.bilibili.com/video/BV1GJ411x7h7/"
-              title="微笑吧"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-              allowFullScreen>
-            </iframe>
-          </div>
+        {/* Background Music Section */}
+        <div className="mb-12 fixed bottom-16 right-4 z-50">
+          <audio controls loop className="rounded-lg shadow-lg">
+            <source src="/smile.mp3" type="audio/mpeg" />
+            Your browser does not support the audio element.
+          </audio>
         </div>
 
         {/* Nature Image Carousel */}
