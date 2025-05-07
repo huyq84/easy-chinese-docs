@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
@@ -8,16 +8,59 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { toast } from "@/components/ui/use-toast";
 
 const Index = () => {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [audioLoaded, setAudioLoaded] = useState(false);
+
+  useEffect(() => {
+    // Check if audio loads successfully
+    const audioElement = document.getElementById("background-music") as HTMLAudioElement;
+    
+    const handleCanPlay = () => {
+      setAudioLoaded(true);
+      console.log("Audio can play now");
+    };
+    
+    const handleError = (e: any) => {
+      console.error("Audio failed to load:", e);
+      toast({
+        title: "音频加载失败",
+        description: "背景音乐无法加载，请稍后再试",
+        variant: "destructive",
+      });
+    };
+    
+    audioElement.addEventListener("canplay", handleCanPlay);
+    audioElement.addEventListener("error", handleError);
+    
+    return () => {
+      audioElement.removeEventListener("canplay", handleCanPlay);
+      audioElement.removeEventListener("error", handleError);
+    };
+  }, []);
 
   const togglePlay = () => {
     const audioElement = document.getElementById("background-music") as HTMLAudioElement;
     if (isPlaying) {
       audioElement.pause();
     } else {
-      audioElement.play();
+      const playPromise = audioElement.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            console.log("Audio started playing");
+          })
+          .catch(err => {
+            console.error("Play was prevented:", err);
+            toast({
+              title: "播放失败",
+              description: "浏览器阻止了自动播放，请尝试手动点击播放按钮",
+              variant: "destructive",
+            });
+          });
+      }
     }
     setIsPlaying(!isPlaying);
   };
@@ -25,7 +68,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-black text-white">
       <div className="container mx-auto px-4 py-12">
-        {/* Background Music Section */}
+        {/* Background Music Section - Using a more reliable Chinese music source */}
         <div className="mb-12 fixed bottom-16 right-4 z-50">
           <audio 
             id="background-music"
@@ -34,7 +77,10 @@ const Index = () => {
             preload="auto" 
             className="rounded-lg shadow-lg"
           >
-            <source src="https://zz123.com/play/aszvavv.htm" type="audio/mpeg" />
+            <source 
+              src="https://music.163.com/song/media/outer/url?id=1957473296.mp3" 
+              type="audio/mpeg" 
+            />
             Your browser does not support the audio element.
           </audio>
           <button 
